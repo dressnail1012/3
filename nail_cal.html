@@ -225,18 +225,19 @@
             const 固定項目 = document.querySelectorAll('input[type="checkbox"]');
             固定項目.forEach(checkbox => {
                 if (checkbox.checked) {
-                    if(checkbox.id.startsWith('凝膠_') ||checkbox.id.startsWith('卸甲_')){
-                    const 固定項目金額 = parseFloat(checkbox.dataset.price);
-                    const 固定項目名稱 = document.querySelector(`label[for="${checkbox.id}"]`).textContent;
+                    const 項目金額 = parseFloat(checkbox.dataset.price);
+                    const 項目名稱 = document.querySelector(`label[for="${checkbox.id}"]`).textContent;
 
+                    // 1. 處理固定項目
                     if (checkbox.id.startsWith('凝膠_')) {
-                        明細類別['凝膠'].push({ label:固定項目名稱, price: 固定項目金額 });                   
+                        明細類別['凝膠'].push({ label:項目名稱, price: 項目金額 });                    
+                        總金額 += 項目金額;	                
                     } 
                     else if (checkbox.id.startsWith('卸甲_')) {
-                        明細類別['卸甲'].push({ label:固定項目名稱, price: 固定項目金額 });
-					}
-                    總金額 += 固定項目金額;	
-                    }}
+                        明細類別['卸甲'].push({ label:項目名稱, price: 項目金額 });                   
+                        總金額 += 項目金額;	
+					}                   
+                }
             });     
 					
            
