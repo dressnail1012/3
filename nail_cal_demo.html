@@ -185,7 +185,23 @@
             <label for="凝膠_單色">單色</label>
             <span class="價格">1000 元</span>
         </div>               
-             
+             <div class="服務項目">
+	    <input type="checkbox" id="凝膠_法式" data-price="1500">
+            <label for="凝膠_法式">法式</label>
+            <span class="價格">1500 元</span>
+        </div>   
+        <h3>保養</h3>
+        <div class="服務項目">
+            <input type="checkbox" id="手保_基礎" data-price="200">
+            <label for="手保_基礎">手部基礎保養</label>
+            <span class="價格">300 元</span>
+           </div>   
+        <div class="服務項目">
+            <input type="checkbox" id="手保_深層" data-price="200">
+            <label for="手保_深層">手部深層保養</label>
+            <span class="價格">500 元</span>
+       
+        </div>     
         <h3>卸甲</h3>
 		<div class="服務項目">
             <input type="checkbox" id="卸甲_本店續" data-price="200">
@@ -218,9 +234,10 @@
             
             const 明細類別 = {
                 '凝膠': [],
+                   '保養': [],
                 '卸甲': []
             };
-            
+
             const 勾選項目 = document.querySelectorAll('input[type="checkbox"]');
             勾選項目.forEach(checkbox => {
                 if (checkbox.checked) {
@@ -232,10 +249,14 @@
                         明細類別['凝膠'].push({ label:項目名稱, price: 項目金額 });                    
                         總金額 += 項目金額;	                
                     } 
-                    else if (checkbox.id.startsWith('卸甲_')) {
+                    else if (checkbox.id.startsWith('手保_')) {
+                        明細類別['保養'].push({ label:項目名稱, price: 項目金額 });                   
+                        總金額 += 項目金額;	
+					}                     
+					 else if (checkbox.id.startsWith('卸甲_')) {
                         明細類別['卸甲'].push({ label:項目名稱, price: 項目金額 });                   
                         總金額 += 項目金額;	
-					}                   
+					}                 
                 }
             });     
 					
@@ -264,6 +285,5 @@
         }
     </script>
 </body>
-
 
 </html>
