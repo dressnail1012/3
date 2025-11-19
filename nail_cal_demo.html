@@ -184,25 +184,50 @@
 	    <input type="checkbox" id="凝膠_單色" data-price="1000">
             <label for="凝膠_單色">單色</label>
             <span class="價格">1000 元</span>
-        </div>               
-             <div class="服務項目">
+        </div>         
+        <div class="服務項目">
 	    <input type="checkbox" id="凝膠_法式" data-price="1500">
             <label for="凝膠_法式">法式</label>
-            <span class="價格">1500 元</span>
-        </div>   
+            <span class="價格">1500 元</span>         
+        </div>
+        <div class="服務項目">
+	    <input type="checkbox" id="凝膠_貓眼" data-price="1500">
+            <label for="凝膠_貓眼">貓眼</label>
+            <span class="價格">1500 元</span>          
+        </div>      
+        
+            <div class="服務項目">            
+            <input type="checkbox" id="浮動跳色" data-price="100"> 
+            <label for="浮動跳色">跳色</label>
+			<div class="浮動項目">
+               <input type="number" id="浮動跳色_數量" value="1" >
+            <span class="價格">x100 元/色</span>
+			</div>
+		</div>
+        
+            <div class="服務項目">            
+            <input type="checkbox" id="浮動延甲" data-price="150"> 
+            <label for="浮動延甲">延甲</label>
+			<div class="浮動項目">
+               <input type="number" id="浮動延甲_數量" value="1" min="1" max="10">
+            <span class="價格">x150 元/色</span>
+			</div>
+		</div>
+          
+
         <h3>保養</h3>
         <div class="服務項目">
-            <input type="checkbox" id="手保_基礎" data-price="200">
-            <label for="手保_基礎">手部基礎保養</label>
-            <span class="價格">300 元</span>
-           </div>   
-        <div class="服務項目">
-            <input type="checkbox" id="手保_深層" data-price="200">
-            <label for="手保_深層">手部深層保養</label>
+            <input type="checkbox" id="保養_基礎" data-price="500">
+            <label for="保養_基礎">基礎手部保養</label>
             <span class="價格">500 元</span>
-       
+        </div>
+        <div class="服務項目">
+            <input type="checkbox" id="保養_深層" data-price="800">
+            <label for="保養_深層">深層手部保養</label>
+            <span class="價格">800 元</span>
         </div>     
-        <h3>卸甲</h3>
+        
+         <h3>卸甲</h3>
 		<div class="服務項目">
             <input type="checkbox" id="卸甲_本店續" data-price="200">
             <label for="卸甲_本店續">本店卸甲續做</label>
@@ -212,7 +237,7 @@
             <input type="checkbox" id="卸甲_本店不續" data-price="300">
             <label for="卸甲_本店不續">本店卸甲不續做</label>
             <span class="價格">300 元</span>
-        </div>                      
+        </div>  
 
         <button id="加總按鈕" onclick="功能_計算總額()">計算總額</button>
 
@@ -234,29 +259,45 @@
             
             const 明細類別 = {
                 '凝膠': [],
-                   '保養': [],
-                '卸甲': []
+                '卸甲': [],
+                '保養': []
             };
 
             const 勾選項目 = document.querySelectorAll('input[type="checkbox"]');
-            勾選項目.forEach(checkbox => {
-                if (checkbox.checked) {
+            勾選項目.forEach(checkbox => {                
+                if (checkbox.checked) {                 
                     const 項目金額 = parseFloat(checkbox.dataset.price);
                     const 項目名稱 = document.querySelector(`label[for="${checkbox.id}"]`).textContent;
 
                     // 1. 處理固定項目
                     if (checkbox.id.startsWith('凝膠_')) {
                         明細類別['凝膠'].push({ label:項目名稱, price: 項目金額 });                    
-                        總金額 += 項目金額;	                
-                    } 
-                    else if (checkbox.id.startsWith('手保_')) {
-                        明細類別['保養'].push({ label:項目名稱, price: 項目金額 });                   
                         總金額 += 項目金額;	
-					}                     
-					 else if (checkbox.id.startsWith('卸甲_')) {
+                    }                   
+                    else if (checkbox.id.startsWith('卸甲_')) {
                         明細類別['卸甲'].push({ label:項目名稱, price: 項目金額 });                   
                         總金額 += 項目金額;	
-					}                 
+					}
+                      else if (checkbox.id.startsWith('保養_')) {
+                        明細類別['保養'].push({ label:項目名稱, price: 項目金額 });                   
+                        總金額 += 項目金額;	
+                    } 
+                    
+                    //2. 處理浮動項目
+                    //跳色
+                    else if( checkbox.id ==('浮動跳色')){                     
+                        const 數量 = parseInt(document.getElementById('浮動跳色_數量').value) || 1;     
+                        const 金額 = 項目金額 * 數量;                        
+                        明細類別['凝膠'].push({ label: `${項目名稱} x ${數量}`, price: 金額 });
+                        總金額 += 金額;
+                    } 
+                    //延甲
+                    else if( checkbox.id ==('浮動延甲')){                     
+                        const 數量 = parseInt(document.getElementById('浮動延甲_數量').value) || 1;     
+                        const 金額 = 項目金額 * 數量;                        
+                        明細類別['凝膠'].push({ label: `${項目名稱} x ${數量}`, price: 金額 });
+                        總金額 += 金額;
+                    } 
                 }
             });     
 					
