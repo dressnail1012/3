@@ -173,47 +173,78 @@
 </head>
 <body>
     <div class="container"> <!-- 計算機的項目 -->
-        <h1>SOTA nail</h1>       
+        <h1>DRESS.nail</h1>       
         <h3>凝膠造型</h3>
         <div class="服務項目">  
-	    <input type="checkbox" id="凝膠_透明" data-price="900"> <!-- 固定項目 -->
+	    <input type="checkbox" id="凝膠_透明" data-price="500"> <!-- 固定項目 -->
             <label for="凝膠_透明">透明健甲</label>
-            <span class="價格">900 元</span>
+            <span class="價格">500 元</span>
         </div>
         <div class="服務項目">
-	    <input type="checkbox" id="凝膠_單色" data-price="1000">
+	    <input type="checkbox" id="凝膠_單色" data-price="800">
             <label for="凝膠_單色">單色</label>
-            <span class="價格">1000 元</span>
-        </div>         
+            <span class="價格">800 元</span>
+        </div>     
         <div class="服務項目">
-	    <input type="checkbox" id="凝膠_法式" data-price="1500">
+	    <input type="checkbox" id="凝膠_法式" data-price="1200">
             <label for="凝膠_法式">法式</label>
-            <span class="價格">1500 元</span>         
+            <span class="價格">1200 元</span>         
         </div>
         <div class="服務項目">
-	    <input type="checkbox" id="凝膠_貓眼" data-price="1500">
+	    <input type="checkbox" id="凝膠_貓眼" data-price="1000">
             <label for="凝膠_貓眼">貓眼</label>
-            <span class="價格">1500 元</span>          
-        </div>      
-        
-            <div class="服務項目">            
-            <input type="checkbox" id="浮動跳色" data-price="100"> 
+            <span class="價格">1000 元</span>          
+        </div>    
+        <div class="服務項目">            
+            <input type="checkbox" id="浮動跳色" data-price="50"> <!-- 浮動項目 -->
             <label for="浮動跳色">跳色</label>
 			<div class="浮動項目">
-               <input type="number" id="浮動跳色_數量" value="1" >
-            <span class="價格">x100 元/色</span>
+               <input type="number" id="浮動跳色_數量" value="1" min="1" max="10">
+            <span class="價格">50 元/色</span>
 			</div>
-		</div>
-        
-            <div class="服務項目">            
-            <input type="checkbox" id="浮動延甲" data-price="150"> 
+			       </div>    
+        <div class="服務項目">            
+            <input type="checkbox" id="浮動延甲" data-price="100"> <!-- 浮動項目 -->
             <label for="浮動延甲">延甲</label>
 			<div class="浮動項目">
                <input type="number" id="浮動延甲_數量" value="1" min="1" max="10">
-            <span class="價格">x150 元/色</span>
+            <span class="價格">x100 元/色</span>
 			</div>
 		</div>
-          
+
+        <h3>自訂</h3>
+      		<div id="自訂項目區"> <!-- 自訂項目 -->
+            </div>
+        <div class="自訂項目">
+            <div class="自訂項目內容">
+                <input type="text" id="自訂項目名稱" placeholder="名稱">
+                <input type="number" id="自訂項目單價" placeholder="單價">
+                <span> x </span>
+                <input type="number" id="自訂項目數量" value="1" min="1">
+            </div>
+            <button id="自訂項目按鈕" onclick="功能_新增自訂項目()">新增</button>
+        </div>
+                
+             
+        <h3>卸甲</h3>
+		<div class="服務項目">
+            <input type="checkbox" id="卸甲_本店續" data-price="200">
+            <label for="卸甲_本店續">本店卸甲續做</label>
+            <span class="價格">200 元</span>
+        </div>        
+        <div class="服務項目">
+            <input type="checkbox" id="卸甲_本店不續" data-price="300">
+            <label for="卸甲_本店不續">本店卸甲不續做</label>
+            <span class="價格">300 元</span>
+        </div> 
+        <div class="服務項目">            
+            <input type="checkbox" id="浮動卸甲" data-price="20"> <!-- 浮動項目 -->
+            <label for="浮動卸甲">卸甲</label>
+			<div class="浮動項目">
+               <input type="number" id="浮動卸甲_數量" value="1" min="1" max="5">
+            <span class="價格">x20 元/隻</span>
+			</div>
+		</div>                     
 
         <h3>保養</h3>
         <div class="服務項目">
@@ -225,19 +256,18 @@
             <input type="checkbox" id="保養_深層" data-price="800">
             <label for="保養_深層">深層手部保養</label>
             <span class="價格">800 元</span>
-        </div>     
-        
-         <h3>卸甲</h3>
+        </div>
+
+        <h3>折扣</h3>
 		<div class="服務項目">
-            <input type="checkbox" id="卸甲_本店續" data-price="200">
-            <label for="卸甲_本店續">本店卸甲續做</label>
-            <span class="價格">200 元</span>
-        </div>        
-        <div class="服務項目">
-            <input type="checkbox" id="卸甲_本店不續" data-price="300">
-            <label for="卸甲_本店不續">本店卸甲不續做</label>
-            <span class="價格">300 元</span>
-        </div>  
+            <input type="checkbox" id="折扣_九折" value="0.9"> <!-- 活動項目 -->
+            <label for="折扣_九折">九折優惠</label>            
+        </div>
+        <div class="浮動項目">
+            <input type="checkbox" id="折價券"> <!-- 活動項目 -->
+            <label for="折價券">折價券</label>
+             <input type="number" id="折價券金額" value="100">             
+		</div>
 
         <button id="加總按鈕" onclick="功能_計算總額()">計算總額</button>
 
@@ -259,30 +289,31 @@
             
             const 明細類別 = {
                 '凝膠': [],
+                '自訂': [],
                 '卸甲': [],
-                '保養': []
+                '保養': [],
+                '折扣': []
             };
 
             const 勾選項目 = document.querySelectorAll('input[type="checkbox"]');
-            勾選項目.forEach(checkbox => {                
-                if (checkbox.checked) {                 
+            勾選項目.forEach(checkbox => {
+                if (checkbox.checked) {
                     const 項目金額 = parseFloat(checkbox.dataset.price);
                     const 項目名稱 = document.querySelector(`label[for="${checkbox.id}"]`).textContent;
 
                     // 1. 處理固定項目
                     if (checkbox.id.startsWith('凝膠_')) {
                         明細類別['凝膠'].push({ label:項目名稱, price: 項目金額 });                    
-                        總金額 += 項目金額;	
-                    }                   
+                        總金額 += 項目金額;	                
+                    } 
                     else if (checkbox.id.startsWith('卸甲_')) {
                         明細類別['卸甲'].push({ label:項目名稱, price: 項目金額 });                   
                         總金額 += 項目金額;	
-					}
-                      else if (checkbox.id.startsWith('保養_')) {
+					} 
+                    else if (checkbox.id.startsWith('保養_')) {
                         明細類別['保養'].push({ label:項目名稱, price: 項目金額 });                   
                         總金額 += 項目金額;	
-                    } 
-                    
+                    }     
                     //2. 處理浮動項目
                     //跳色
                     else if( checkbox.id ==('浮動跳色')){                     
@@ -291,30 +322,74 @@
                         明細類別['凝膠'].push({ label: `${項目名稱} x ${數量}`, price: 金額 });
                         總金額 += 金額;
                     } 
-                    //延甲
-                    else if( checkbox.id ==('浮動延甲')){                     
-                        const 數量 = parseInt(document.getElementById('浮動延甲_數量').value) || 1;     
+                    //卸甲
+                    else if( checkbox.id ==('浮動卸甲')){                     
+                        const 數量 = parseInt(document.getElementById('浮動卸甲_數量').value) || 1;     
                         const 金額 = 項目金額 * 數量;                        
-                        明細類別['凝膠'].push({ label: `${項目名稱} x ${數量}`, price: 金額 });
+                        明細類別['卸甲'].push({ label: `${項目名稱} x ${數量}`, price: 金額 });
                         總金額 += 金額;
-                    } 
+                    }               
                 }
-            });     
+            });   
+            
+            // 3. 處理自訂項目
+            const 自訂項目 = document.querySelectorAll('#自訂項目區 .自訂項目');
+            自訂項目.forEach(item => {
+                const 自訂項目名稱 = item.querySelector('.自訂項目_名稱').value;
+                const 自訂項目單價 = parseFloat(item.querySelector('.自訂項目_單價').value);
+                const 自訂項目數量 = parseInt(item.querySelector('.自訂項目_數量').value)|| 1;
+                const 自訂項目金額 = parseFloat(item.querySelector('.自訂項目_金額').value);
+                if (自訂項目數量>1)
+                明細類別['自訂'].push({ label: `${自訂項目名稱} (${自訂項目單價} x ${自訂項目數量})`, price: 自訂項目金額 });                
+                else
+                明細類別['自訂'].push({ label: 自訂項目名稱, price: 自訂項目金額 });
+
+                總金額 += 自訂項目金額;
+            });
+            			
+            // 4. 折扣(需要設立條件)        
+            //若有折價券先折,再打折
+            const 折扣_折價券 = document.getElementById('折價券');
+            if (折扣_折價券 != null && 折扣_折價券.checked) {     
+                const 折價券金額 = parseInt(document.getElementById('折價券金額').value) || 1;
+                const 折價券名稱 = document.querySelector('label[for="折價券"]').textContent;                              
+                明細類別['折扣'].push({label: 折價券名稱,price:折價券金額 });
+                總金額 -= 折價券金額;
+            }
+            //打折
+            const 折扣_九折 = document.getElementById('折扣_九折');
+            if (折扣_九折 != null && 折扣_九折.checked) {     
+                const 折扣_折數 = parseFloat(折扣_九折.value);
+                const 折扣名稱 = document.querySelector('label[for="折扣_九折"]').textContent;                              
+                明細類別['折扣'].push({ label:折扣名稱 });
+                總金額 *= 折扣_折數;
+            }
 					
            
             // 根據分類生成收據內容
             for (const category in 明細類別) {
                 if (明細類別[category].length > 0) {
-                    明細內容 += `<strong>【${category}】</strong>`;                        
-                    
-                    明細類別[category].forEach(item => {
+                    明細內容 += `<strong>【${category}】</strong>`;                    
+                    if(category =='折扣'){
+                       明細類別[category].forEach(item => {
+                        if(item.price !=null){
                         明細內容 += `<p>${item.label} <span class="item-price">${item.price} 元</span></p>`;
-                    });                  
+                        }else{
+                        明細內容 += `<p>${item.label}</p>`;
+                        }
+                    });
+                      
+                    }else
+                    {
+                        明細類別[category].forEach(item => {
+                        明細內容 += `<p>${item.label} <span class="item-price">${item.price} 元</span></p>`;
+                    }); 
+                    }                   
                 }
             }
 
-            // 如果沒有項目被選，顯示提示
-            if (總金額 === 0) {
+             // 如果沒有項目被選，顯示提示
+            if (總金額 === 0 && 明細內容 == '') {
                 收據明細區.innerHTML = '<p>請選擇或新增服務項目。</p>';
                 收據區.style.display = 'block';
                 總金額區.textContent = '0';
@@ -323,6 +398,50 @@
                 總金額區.textContent = 總金額;
                 收據區.style.display = 'block';
             }
+        }
+ 
+        function 功能_新增自訂項目() {
+            const 項目內容 = document.getElementById('自訂項目區');
+
+            const 項目名稱 = document.getElementById('自訂項目名稱');
+            const 項目單價 = document.getElementById('自訂項目單價');
+            const 項目數量 = document.getElementById('自訂項目數量');
+
+            const 名稱 = 項目名稱.value.trim();
+            const 單價 = parseFloat(項目單價.value);
+            const 數量 = parseInt(項目數量.value);
+            const 金額 = 單價 * 數量;
+
+            if (名稱 === '' || isNaN(單價) || isNaN(數量) || 數量 < 1) {
+                alert('請輸入有效的服務名稱、單價和數量。');
+                return;
+            }
+
+            // 建立新的自訂項目 div 
+            const newItemDiv = document.createElement('div');
+            newItemDiv.className = '自訂項目';          
+            
+            newItemDiv.innerHTML = `
+                <label>${名稱}</label>
+                <div class="自訂項目內容">
+                    <span class="價格"> ${單價} 元</span>
+                    <span class ="價格">x ${數量}</span>
+                    <span class="自訂項目價格">${金額} 元</span>
+                </div>
+                <input type="hidden" class="自訂項目_名稱" value="${名稱}">
+                <input type="hidden" class="自訂項目_數量" value="${數量}">
+                <input type="hidden" class="自訂項目_單價" value="${單價}">
+                <input type="hidden" class="自訂項目_金額" value="${金額}">
+                <button class="delete-btn" onclick="this.parentElement.remove()">X</button>
+            `;
+            
+       
+            項目內容.appendChild(newItemDiv);
+
+            // 清空輸入框
+            項目名稱.value = '';
+            項目單價.value = '';
+            項目數量.value = '1';
         }
     </script>
 </body>
